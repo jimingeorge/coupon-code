@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+      integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh"
+      crossorigin="anonymous"
+    />
+    <title>Coupon Code Validator</title>
+  </head>
+  <body>
+    <div class="container">
+      <div class="text-center">
+        <h1>Coupon Code Validator</h1>
+        <hr />
+      </div>
+      <div>
+          <h2>Documentation</h2>
+          <table class="table table-striped text-center table-bordered">
+            <thead>
+              <tr>
+                <th scope="col">#</th>
+                <th scope="col">Endpoints</th>
+                <th scope="col">Actions</th>
+                <th scope="col">Parameters</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <th scope="row">1</th>
+                <td>/couponvalidator</td>
+                <td>GET Request</td>
+                <td>"price" and "coupon"(query based)</td>
+              </tr>
+              <tr>
+                <th scope="row">2</th>
+                <td>/coupon</td>
+                <td>GET Request</td>
+                <td>"_id", "startDate", "coupon", "endDate", "couponType"</td>
+              </tr>
+              <tr>
+                <th scope="row">3</th>
+                <td>/coupon/flatcoupon</td>
+                <td>GET, POST, DELETE</td>
+                <td>"_id", "coupon_id", "discountAmnt", "minCartPrice"</td>
+              </tr>
+              <tr>
+                <th scope="row">4</th>
+                <td>/coupon/percentagecoupon</td>
+                <td>GET, POST, DELETE</td>
+                <td>"_id", "coupon_id", "maxDiscountAmnt", "minCartPrice", "discountPercentage"</td>
+              </tr>
+            </tbody>
+          </table>
+          <br>
+        <div>
+          <h3>Working</h3>
+          
+          <ul>
+            <li>
+                <p>
+                  <strong>/couponvalidator - </strong>
+                  <em
+                    >This endpoint validates the Coupon code and returns the discount
+                    amount or discount percentage depending on the coupon type(Flat
+                    Discount Coupon or Percentage Discount Coupon).</em
+                  >
+                </p>
+                <p>Example: <br>
+                    <ul>
+                        <li>Flat Discount Coupon <br>   
+                            /couponvalidator?price=200&coupon=COUPON50
+                             <br>
+                            <span>Output: <br></span>
+                            {
+                                "discountAmnt": 50
+                            }
+                        </li>
+                        <br>
+                        <li>Percentage Discount Coupon <br> 
+                            <ol>
+                                <br>
+                                <li>If discount amount is within the 'maxDiscountAmnt' allowed <br>
+                                    /couponvalidator?price=1500&coupon=COUPON500
+                                    <br>
+                                    <strong>Output: <br></strong>
+                                    {
+                                        "discountAmnt": 300,
+                                        "discountPercentage": 20
+                                    }
+                                </li><br>
+                                <li>If discount amount exceeds the 'maxDiscountAmnt' allowed<br>
+                                    /couponvalidator?price=3000&coupon=COUPON500
+                                    <br>
+                                    <strong>Output: <br></strong>
+                                    {
+                                        "discountAmnt": 500
+                                    }
+                                </li><br>
+                            </ol>  
+                            <li>
+                                If coupon is invalid<br>
+                                /couponvalidator?price=3000&coupon=INVALIDCOUPON
+                                <br>
+                                <strong>Output: <br></strong>
+                                {
+                                    "error": "invalid coupon"
+                                }
+                            </li><br>
+                            <li>If coupon has expired<br>
+                                /couponvalidator?price=3000&coupon=COUPON400
+                                <br>
+                                <strong>Output: <br></strong>
+                                {
+                                    "error": "Coupon has been expired"
+                                }
+                            </li>
+                        </li>
+                    </ul>
+                </p>
+                
+              </li>
+              <br />
+              <li>
+                <strong>/coupon- </strong>
+                <em
+                  >This endpoint allows you to add coupons as well as list all
+                  coupons.</em
+                >
+              </li>
+              <br />
+              <li>
+                <strong>/coupon/flatcoupon- </strong>
+                <em
+                  >This endpoint allows you to add "Flat Discount Coupons" as well as
+                  list them all present in the database.</em
+                >
+              </li>
+              <br />
+              <li>
+                <strong>/coupon/percentagecoupon- </strong>
+                <em
+                  >This endpoint allows you to add "Percentage Discount Coupons" as
+                  well as list them all present in the database.</em
+                >
+              </li>
+              <br />
+        </ul>
+        </div>
+        </div>
+    </div>
+
+    <script
+      src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
+      integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+      integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
+      integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
+      crossorigin="anonymous"
+    ></script>
+  </body>
+</html>
