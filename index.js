@@ -1,6 +1,6 @@
 const express = require('express')
 const app = express()
-const port = 3050
+const port = process.env.PORT || 5000;
 const router = require('./config/route')
 const setupDB = require('./config/database') 
 
