@@ -13,8 +13,7 @@ const codeSchema = new Schema({
         required:true,
         validate:{
             validator:value=>{
-                console.log(value)
-                if (value < new Date().getDate){
+                if (value > new Date()){
                     return false
                 }
             },
@@ -26,11 +25,16 @@ const codeSchema = new Schema({
         required:true,
         validate:{
             validator:value=>{
-                if (value <= this.startDate ){
+                let startDate
+                this.startDate?startDate=this.startDate:startDate=new Date()
+                // console.log(value < startDate)
+                // console.log(value.getTime() > this.startDate.getTime());
+                // console.log(value.getTime() < this.startDate.getTime());
+                if (value <= startDate){
                     return false
                 }
             },
-            message:`endDate shouldn't be lesser than or equal to startDate date`
+            message:`endDate shouldn't be lesser than or equal to startDate`
         }
     },
     
