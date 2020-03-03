@@ -57,17 +57,15 @@
           </table>
           <br>
         <div>
-          <h3>Working</h3>
           
-          <ul>
-            <li>
+          <ul style="list-style-type: none;">
+            <li class="jumbotron">
                 <p>
                   <strong>/couponvalidator - </strong>
-                  <em
-                    >This endpoint validates the Coupon code and returns the discount
+                  
+                    This endpoint validates the Coupon code and returns the discount
                     amount or discount percentage depending on the coupon type(Flat
-                    Discount Coupon or Percentage Discount Coupon).</em
-                  >
+                    Discount Coupon or Percentage Discount Coupon).
                 </p>
                 <p>Example: <br>
                     <ul>
@@ -129,28 +127,91 @@
                 
               </li>
               <br />
-              <li>
+              <li class="jumbotron">
                 <strong>/coupons- </strong>
-                <em
-                  >This endpoint allows you to add coupons as well as list them all.</em
-                >
+                This endpoint allows you to add coupons as well as list them all.<br><br>
+                <h5><strong>Adding Main Coupon</strong></h5>
+                <p>
+                  Here Coupon is added with "startDate" , "endDate" and "couponType" ("_id" is automatically created by mongoDB for each entry). <br>
+                  <em>Note: If "startDate" is not provided, a default value of today's date will be considered</em>
+                  Example: <br><br>
+                  
+                  <strong>POST Request :-</strong><br> {
+                      "coupon":"COUPON80",
+                      "startDate":"2020-03-03"
+                      "endDate": "2020-03-06",
+                      "couponType":"percentage"
+                  }
+                  <br>
+                  <strong>Response from server :-</strong> <br>
+                  {
+                    "startDate": "2020-03-03T00:00:00.000Z",
+                    "_id": "5e5e1761d9944918998a0dac",
+                    "coupon": "COUPON80",
+                    "endDate": "2020-03-06T00:00:00.000Z",
+                    "couponType": "percentage",
+                    "__v": 0
+                }
                 </p>
               </li>
               <br />
-              <li>
+              <li class="jumbotron">
                 <strong>/coupons/flatcoupons- </strong>
-                <em
-                  >This endpoint allows you to add, list and delete "Flat Discount Coupons" present in the database.</em
-                >
+                This endpoint allows you to add, list and delete "Flat Discount Coupons" present in the database.<br><br>
+                <h5><strong>Adding Flat Type Coupon</strong></h5>
+                <p>
+                  Flat Type Coupon is added with "coupon_id"(refers to the <em>"_id"</em> of main coupon created above) , "discountAmnt" and "minCartPrice". ("_id" is automatically created by mongoDB for each entry). <br>
+                  <em>Note: All fields above are set as required</em>
+                  Example: <br><br>
+                  
+                  <strong>POST Request :-</strong> <br>
+                  {
+                      "coupon_id":"5e5e1761d9944918998a0dac",
+                      "discountAmnt": "80",
+                      "minCartPrice": "200"
+                  }
+                  <br>
+                  <strong>Response from server :-</strong> <br>
+                  {
+                    "_id": "5e5e19187e776400173b2735",
+                    "coupon_id": "5e5e1761d9944918998a0dac",
+                    "discountAmnt": 80,
+                    "minCartPrice": 200,
+                    "__v": 0
+                  }
+                </p>
               </li>
               <br />
-              <li>
+              <li class="jumbotron">
                 <strong>/coupons/percentagecoupons- </strong>
-                <em
-                  >This endpoint allows you to add, list and delete "Percentage Discount Coupons" present in the database.</em
-                >
+                This endpoint allows you to add, list and delete "Percentage Discount Coupons" present in the database.<br><br>
+                <h5><strong>Adding Percentage Type Coupon</strong></h5>
+                <p>
+                  Percentage Type Coupon is added with "coupon_id"(refers to the <em>"_id"</em> of main coupon created) , "discountAmnt" and "minCartPrice". ("_id" is automatically created by mongoDB for each entry). <br>
+                  <em>Note: All fields above are set as required</em>
+                  Example: <br><br>
+                  
+                  <strong>POST Request :-</strong> <br>
+                  {
+                    "coupon_id":"5e5df3030fa75e00170a585e",
+                      "maxDiscountAmnt": "500",
+                      "minCartPrice": "2000",
+                      "discountPercentage":"20"
+                  }
+                  <br>
+                  <strong>Response from server :-</strong> <br>
+                  {
+                    "_id": "5e5df346f4b3947ae910904d",
+                    "coupon_id": "5e5df3030fa75e00170a585e",
+                    "maxDiscountAmnt": 500,
+                    "minCartPrice": 2000,
+                    "discountPercentage": 20,
+                    "__v": 0
+                  }
+                </p>
               </li>
               <br />
+
         </ul>
         </div>
         </div>
