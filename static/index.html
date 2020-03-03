@@ -37,20 +37,20 @@
               </tr>
               <tr>
                 <th scope="row">2</th>
-                <td>/coupon</td>
-                <td>GET Request</td>
+                <td>/coupons</td>
+                <td>GET, POST Requests</td>
                 <td>"_id", "startDate", "coupon", "endDate", "couponType"</td>
               </tr>
               <tr>
                 <th scope="row">3</th>
-                <td>/coupon/flatcoupon</td>
-                <td>GET, POST, DELETE</td>
+                <td>/coupons/flatcoupons</td>
+                <td>GET, POST, DELETE Requests</td>
                 <td>"_id", "coupon_id", "discountAmnt", "minCartPrice"</td>
               </tr>
               <tr>
                 <th scope="row">4</th>
-                <td>/coupon/percentagecoupon</td>
-                <td>GET, POST, DELETE</td>
+                <td>/coupons/percentagecoupons</td>
+                <td>GET, POST, DELETE Requests</td>
                 <td>"_id", "coupon_id", "maxDiscountAmnt", "minCartPrice", "discountPercentage"</td>
               </tr>
             </tbody>
@@ -76,7 +76,9 @@
                              <br>
                             <span>Output: <br></span>
                             {
-                                "discountAmnt": 50
+                              "cartPrice": 200,
+                              "discountAmount": 50,
+                              "finalPrice": 150
                             }
                         </li>
                         <br>
@@ -88,8 +90,9 @@
                                     <br>
                                     <strong>Output: <br></strong>
                                     {
-                                        "discountAmnt": 300,
-                                        "discountPercentage": 20
+                                      "cartPrice": 1500,
+                                      "discountPercentage": 20,
+                                      "finalPrice": 1200
                                     }
                                 </li><br>
                                 <li>If discount amount exceeds the 'maxDiscountAmnt' allowed<br>
@@ -97,7 +100,9 @@
                                     <br>
                                     <strong>Output: <br></strong>
                                     {
-                                        "discountAmnt": 500
+                                      "cartPrice": 3000,
+                                      "discountAmount": 500,
+                                      "finalPrice": 2500
                                     }
                                 </li><br>
                             </ol>  
@@ -125,26 +130,24 @@
               </li>
               <br />
               <li>
-                <strong>/coupon- </strong>
+                <strong>/coupons- </strong>
                 <em
-                  >This endpoint allows you to add coupons as well as list all
-                  coupons.</em
+                  >This endpoint allows you to add coupons as well as list them all.</em
+                >
+                </p>
+              </li>
+              <br />
+              <li>
+                <strong>/coupons/flatcoupons- </strong>
+                <em
+                  >This endpoint allows you to add, list and delete "Flat Discount Coupons" present in the database.</em
                 >
               </li>
               <br />
               <li>
-                <strong>/coupon/flatcoupon- </strong>
+                <strong>/coupons/percentagecoupons- </strong>
                 <em
-                  >This endpoint allows you to add "Flat Discount Coupons" as well as
-                  list them all present in the database.</em
-                >
-              </li>
-              <br />
-              <li>
-                <strong>/coupon/percentagecoupon- </strong>
-                <em
-                  >This endpoint allows you to add "Percentage Discount Coupons" as
-                  well as list them all present in the database.</em
+                  >This endpoint allows you to add, list and delete "Percentage Discount Coupons" present in the database.</em
                 >
               </li>
               <br />

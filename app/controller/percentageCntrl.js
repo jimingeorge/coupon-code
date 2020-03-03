@@ -13,7 +13,7 @@ module.exports.create = (req,res)=>{
 }
 
 module.exports.list=(req,res)=>{
-    Percentage.find()
+    Percentage.find().populate('coupon_id')
         .then(percentage=>{
             res.json(percentage)
         })
