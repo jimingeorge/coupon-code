@@ -2,7 +2,7 @@ const mongoose = require('mongoose')
 
 
 const setupDB = ()=>{
-    mongoose.connect('mongodb://localhost:27017/coupon-code',{useNewUrlParser:true,useUnifiedTopology:true})
+    mongoose.connect('mongodb+srv://jiminDB:jimindb@cluster0-3yifm.mongodb.net/test?retryWrites=true&w=majority',{useNewUrlParser:true,useUnifiedTopology:true})
         .then(()=>{
             console.log('connected to DB')
         })
