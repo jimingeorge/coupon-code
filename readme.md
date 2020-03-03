@@ -1,4 +1,4 @@
-# [Coupon Code Application](https://shrouded-escarpment-03337.herokuapp.com/)
+# Coupon Code Application(https://shrouded-escarpment-03337.herokuapp.com/)
 
 Coupon Code Application is a coupon management application based on Node.js. It allows the user to validate their coupon, apply the coupon on their cart to get the discount amount , create coupons , list them and edit them. 
 
@@ -29,7 +29,7 @@ Coupon Code Application is a coupon management application based on Node.js. It 
 * Flat Dicount and Percentage Discount coupon can be deleted by sending DELTE request to /coupons/flatcoupons/:<"coupon_id"> and /coupons/percentagecoupons/:<"coupon_id"> respectively 
 (*Note:the <"coupon_id"> mentioned here is main coupon's "_id" that was refered to and not the current fields "_id"* ).
 
-*For more detailed working instruction refer https://shrouded-escarpment-03337.herokuapp.com/*
+For more detailed working instruction refer https://shrouded-escarpment-03337.herokuapp.com/
 
 ### License
 
