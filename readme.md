@@ -26,7 +26,8 @@ Coupon Code Application is a coupon management application based on Node.js. It 
 * User can add main coupon by making a "post" request to /coupons with "startDate" , "endDate" & "couponType". 
 * Flat Dicount coupon is added by making a "post" request to /coupons/flatcoupons with "coupon_id"(refers to the "_id" of main coupon created), "discountAmnt" and "minCartPrice".
 * Percentage Discount coupon is added by making a "post" request to /coupons/percentagecoupons with "coupon_id"(refers to the "_id" of main coupon created) , "maxDiscountAmnt", "minCartPrice" and "discountPercentage".
-* Flat Dicount and Percentage Discount coupon can be deleted by sending DELTE request to /coupons/flatcoupons/:<"coupon_id"> and /coupons/percentagecoupons/:<"coupon_id"> respectively (Note:the <"coupon_id"> mentioned here is main coupon's "_id" that was refered to and not the current fields "_id" ).
+* Flat Dicount and Percentage Discount coupon can be deleted by sending DELTE request to /coupons/flatcoupons/:<"coupon_id"> and /coupons/percentagecoupons/:<"coupon_id"> respectively 
+(*Note:the <"coupon_id"> mentioned here is main coupon's "_id" that was refered to and not the current fields "_id"* ).
 
 ### License
 
