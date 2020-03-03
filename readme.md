@@ -15,6 +15,11 @@ Coupon Code Application is a coupon management application based on Node.js. It 
 * If coupon is valid, calculates the discount for the cartPrice and returns the final amount after discount.
 * For Percentage Discount coupon, output depends on if the percentage amount is over or under the maximum allowed discount. 
 
+## Getting it running
+
+1. Install all dependencies by running - `npm install`
+2. To start the application - `npm start`
+
 ## Usage
 
 * /couponvalidator?price=<-price->&coupon=<-coupon-> returns the cartPrice, discountAmount & finalPrice.
